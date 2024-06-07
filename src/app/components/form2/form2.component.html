@@ -1,0 +1,95 @@
+<form [formGroup]="formBasic" (ngSubmit)="guardar()">
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-3">
+    <div class="text-center mb-5">
+      <div class="text-900 text-3xl font-medium mb-3">Formulario de Prueba</div>
+    </div>
+
+    <div>
+      <label for="nombre" class="block text-900 font-medium mb-2">Nombre:</label>
+      <input id="nombre" type="text" placeholder="Nombre" pInputText class="w-full mb-3" formControlName="nombre">
+
+      <label for="apellido" class="block text-900 font-medium mb-2">Apellido:</label>
+      <input id="apellido" type="text" placeholder="Apellido" pInputText class="w-full mb-3" formControlName="apellido">
+
+      <label for="correoElectronico" class="block text-900 font-medium mb-2">Correo Electrónico:</label>
+      <input id="correoElectronico" type="email" placeholder="Correo Electrónico" pInputText class="w-full mb-3" formControlName="correoElectronico">
+      <div *ngIf="formBasic.get('correoElectronico')?.invalid && (formBasic.get('correoElectronico')?.dirty || formBasic.get('correoElectronico')?.touched)">
+        <small class="text-red-500">El correo electrónico debe tener un formato válido.</small>
+      </div>
+
+      <label for="fechaNacimiento" class="block text-900 font-medium mb-2">Fecha de Nacimiento:</label>
+      <input id="fechaNacimiento" type="date" placeholder="Fecha de Nacimiento" pInputText class="w-full mb-3" formControlName="fechaNacimiento">
+      <div *ngIf="formBasic.get('fechaNacimiento')?.invalid && (formBasic.get('fechaNacimiento')?.dirty || formBasic.get('fechaNacimiento')?.touched)">
+        <small class="text-red-500">La fecha de nacimiento debe tener un formato válido.</small>
+      </div>
+
+      <label for="numeroTelefonico" class="block text-900 font-medium mb-2">Número Telefónico:</label>
+      <input id="numeroTelefonico" type="tel" placeholder="Número Telefónico" pInputText class="w-full mb-3" formControlName="numeroTelefonico">
+      <div *ngIf="formBasic.get('numeroTelefonico')?.invalid && (formBasic.get('numeroTelefonico')?.dirty || formBasic.get('numeroTelefonico')?.touched)">
+        <small class="text-red-500">El número telefónico debe tener un formato válido.</small>
+      </div>
+
+      <button pButton pRipple label="REGISTRAR" class="p-button-success mt-3"></button>
+      <p-toast></p-toast>
+    </div>
+  </div>
+</form>
+
+<!--<div class="surface-card p-4 shadow-2 border-round w-full mt-5">
+  <div class="text-center mb-5">
+    <div class="text-900 text-3xl font-medium mb-3">Lista de Usuarios</div>
+  </div>
+  <table class="w-full">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo Electrónico</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Número Telefónico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido }}</td>
+        <td>{{ usuario.correoElectronico }}</td>
+        <td>{{ usuario.fechaNacimiento }}</td>
+        <td>{{ usuario.numeroTelefonico }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>-->
+
+<div class="surface-card p-4 shadow-2 border-round w-full mt-5">
+  <div class="text-center mb-5">
+    <div class="text-900 text-3xl font-medium mb-3">Lista de Usuarios</div>
+  </div>
+  <table class="styled-table w-full">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo Electrónico</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Número Telefónico</th>
+        <th>Acciones</th> <!-- Añadir columna para acciones -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido }}</td>
+        <td>{{ usuario.correoElectronico }}</td>
+        <td>{{ usuario.fechaNacimiento }}</td>
+        <td>{{ usuario.numeroTelefonico }}</td>
+        <td>
+          <button pButton pRipple label="Editar" class="p-button-warning p-button-sm" (click)="editar(usuario.id_usuario)"></button>
+          <button pButton pRipple label="Eliminar" class="p-button-danger p-button-sm" (click)="eliminar(usuario.id_usuario)"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

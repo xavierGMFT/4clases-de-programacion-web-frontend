@@ -1,25 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { BackendService } from './Services/backend.service';
+import { Component } from '@angular/core';
+import { EjemploService } from './service/ejemplo.service'
+import { BackendService } from './service/backend/backend.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+
 })
-export class AppComponent implements OnInit {
-  message: string | undefined;
+export class AppComponent {
+  title = 'Proyecto4A';
 
-  constructor(private backendService: BackendService) {}
-
-  ngOnInit() {
-    this.backendService.getHello().subscribe(
-      (response) => {
-        this.message = response;
-        console.log('Message from backend:', this.message);
-      },
-      (error) => {
-        console.error('Error fetching message:', error);
-      }
-    );
+  constructor(private readonly EjemploService : EjemploService, private readonly backendService: BackendService) {
+    EjemploService.imprimir();
+    backendService.Verificar()
   }
 }
+
+  

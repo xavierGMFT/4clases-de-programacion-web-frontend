@@ -1,0 +1,25 @@
+
+.error {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
